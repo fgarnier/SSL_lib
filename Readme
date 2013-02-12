@@ -1,0 +1,5 @@
+This directories contains the modules and functors that define the
+SSL logic syntax, as well as operations on  SSL formulae.
+This design is only for testing purposes and is likely to be modified
+in latter versions.
+  
