@@ -17,7 +17,10 @@ open Ssl_decision
 open Ssl_pprinters
 (*open Self*)
 
-
+module Ast_goodies = 
+  struct
+    let debug_out = Format.formatter_of_out_channel Pervasives.stdout;
+  end
 
 exception No_more_vars
 
