@@ -50,7 +50,10 @@ doc_html : $(OBJECTS)
 	@echo "Generating HTML API"
 	@$(OCAMLDOC) $(DOCFLAGS)
 
-all : ssl_lib ssl_xlib doc_html
+all : .depend ssl_lib ssl_xlib doc_html
+
+clean :
+	rm *.o *.cmo *.cmx *.cma *.cmxa *.cmi *.annot
 
 include .depend
 
