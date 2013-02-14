@@ -9,7 +9,7 @@ INCLUDEDIR := ./include
 LIBDIR := ./lib
 BINDIR := ./bin
 LIBTARGETNAME := libocamlssl.cma
-XLIBTARGETNAME := lobxocamlssl.cmxa
+XLIBTARGETNAME := libxocamlssl.cmxa
 
 CFLAGS := -annot -c
 DOCFLAGS := -html -d $(DOCEXPORTDIR) *.ml *.mli
@@ -45,7 +45,12 @@ ssl_xlib : $(XOBJECTS)
 	@echo "Building"  $(XLIBTARGETNAME)
 	@ocamlopt -o $(XLIBTARGETNAME) -a $(XOBJECTS)
 
-all : ssl_lib ssl_xlib
+
+doc_html : $(OBJECTS)
+	@echo "Generating HTML API"
+	@$(OCAMLDOC) $(DOCFLAGS)
+
+all : ssl_lib ssl_xlib doc_html
 
 include .depend
 
