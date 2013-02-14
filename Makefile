@@ -50,7 +50,12 @@ doc_html : $(OBJECTS)
 	@echo "Generating HTML API"
 	@$(OCAMLDOC) $(DOCFLAGS)
 
-all : .depend ssl_lib ssl_xlib doc_html
+sort_include_lib :
+	@echo "Moving libs to lib/ and copy *.mli in include/" 
+	@cp *.mli ${INCLUDE_DIR}
+	@mv *.cma *.cmxa *.a ${LIBDIR}
+
+all : .depend ssl_lib ssl_xlib doc_html sort_include_lib
 
 clean :
 	rm *.o *.cmo *.cmx *.cma *.cmxa *.cmi *.annot
